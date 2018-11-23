@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8c274eeceb9d477ea57c17f96dbd4404" Name="Diagram1">
+        <EntityTypeShape EntityType="EnrolamientoModel.Banco" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnrolamientoModel.Dependiente" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnrolamientoModel.Empresa" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnrolamientoModel.Parentesco" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnrolamientoModel.Plan" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnrolamientoModel.TipoCuenta" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnrolamientoModel.Titular" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="EnrolamientoModel.tit_banco" ManuallyRouted="false" />
+        <AssociationConnector Association="EnrolamientoModel.dep_parent" ManuallyRouted="false" />
+        <AssociationConnector Association="EnrolamientoModel.dep_tit" ManuallyRouted="false" />
+        <AssociationConnector Association="EnrolamientoModel.tit_emp" ManuallyRouted="false" />
+        <AssociationConnector Association="EnrolamientoModel.tit_plan" ManuallyRouted="false" />
+        <AssociationConnector Association="EnrolamientoModel.tit_tipcuen" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

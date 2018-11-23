@@ -1,0 +1,2 @@
+C:\Proyectos\Servicios-Cobertura\BusinessService\obj\Debug\BusinessService.csprojAssemblyReference.cache
+C:\Proyectos\Servicios-Cobertura\BusinessService\obj\Debug\BusinessService.csproj.CoreCompileInputs.cache

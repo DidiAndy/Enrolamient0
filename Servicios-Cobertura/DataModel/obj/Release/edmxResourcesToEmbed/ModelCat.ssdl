@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EnrolamientoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Banco">
+    <Key>
+      <PropertyRef Name="sec_banco" />
+    </Key>
+    <Property Name="sec_banco" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="estado" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Dependiente">
+    <Key>
+      <PropertyRef Name="sec_dependiente" />
+    </Key>
+    <Property Name="sec_dependiente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cedula_dependiente" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="primer_nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="segundo_nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="primer_apellido" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="segundo_apellido" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="sec_parentesco" Type="int" Nullable="false" />
+    <Property Name="sec_titular" Type="int" Nullable="false" />
+    <Property Name="sec_tipoDoc" Type="int" Nullable="false" />
+    <Property Name="fecha_Nacimiento" Type="datetime" Nullable="false" />
+    <Property Name="genero" Type="int" Nullable="false" />
+    <Property Name="fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="otro_paretesco" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Empresa">
+    <Key>
+      <PropertyRef Name="sec_empresa" />
+    </Key>
+    <Property Name="sec_empresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="logotipo" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="estado" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Parentesco">
+    <Key>
+      <PropertyRef Name="sec_parentesco" />
+    </Key>
+    <Property Name="sec_parentesco" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="estado" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Plan">
+    <Key>
+      <PropertyRef Name="sec_plan" />
+    </Key>
+    <Property Name="sec_plan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Valor" Type="int" Nullable="false" />
+    <Property Name="estado" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoCuenta">
+    <Key>
+      <PropertyRef Name="sec_tipoCuenta" />
+    </Key>
+    <Property Name="sec_tipoCuenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="estado" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Titular">
+    <Key>
+      <PropertyRef Name="sec_titular" />
+    </Key>
+    <Property Name="sec_titular" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cedula_titular" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="primer_nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="segundo_nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="primer_apellido" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="segundo_apellido" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="sec_plan" Type="int" Nullable="false" />
+    <Property Name="valor_total" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="sec_tipoCuenta" Type="int" Nullable="false" />
+    <Property Name="noCuenta" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="div_pago" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="sec_banco" Type="int" Nullable="false" />
+    <Property Name="sec_empresa" Type="int" Nullable="false" />
+    <Property Name="sec_tipoDoc" Type="int" Nullable="false" />
+    <Property Name="fecha_Nacimiento" Type="datetime" Nullable="false" />
+    <Property Name="genero" Type="int" Nullable="false" />
+    <Property Name="fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="estado" Type="smallint" Nullable="false" />
+  </EntityType>
+  <Association Name="dep_parent">
+    <End Role="Parentesco" Type="Self.Parentesco" Multiplicity="1" />
+    <End Role="Dependiente" Type="Self.Dependiente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parentesco">
+        <PropertyRef Name="sec_parentesco" />
+      </Principal>
+      <Dependent Role="Dependiente">
+        <PropertyRef Name="sec_parentesco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="dep_tit">
+    <End Role="Titular" Type="Self.Titular" Multiplicity="1" />
+    <End Role="Dependiente" Type="Self.Dependiente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Titular">
+        <PropertyRef Name="sec_titular" />
+      </Principal>
+      <Dependent Role="Dependiente">
+        <PropertyRef Name="sec_titular" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tit_banco">
+    <End Role="Banco" Type="Self.Banco" Multiplicity="1" />
+    <End Role="Titular" Type="Self.Titular" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Banco">
+        <PropertyRef Name="sec_banco" />
+      </Principal>
+      <Dependent Role="Titular">
+        <PropertyRef Name="sec_banco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tit_emp">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+    <End Role="Titular" Type="Self.Titular" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="sec_empresa" />
+      </Principal>
+      <Dependent Role="Titular">
+        <PropertyRef Name="sec_empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tit_plan">
+    <End Role="Plan" Type="Self.Plan" Multiplicity="1" />
+    <End Role="Titular" Type="Self.Titular" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plan">
+        <PropertyRef Name="sec_plan" />
+      </Principal>
+      <Dependent Role="Titular">
+        <PropertyRef Name="sec_plan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tit_tipcuen">
+    <End Role="TipoCuenta" Type="Self.TipoCuenta" Multiplicity="1" />
+    <End Role="Titular" Type="Self.Titular" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoCuenta">
+        <PropertyRef Name="sec_tipoCuenta" />
+      </Principal>
+      <Dependent Role="Titular">
+        <PropertyRef Name="sec_tipoCuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EnrolamientoModelStoreContainer">
+    <EntitySet Name="Banco" EntityType="Self.Banco" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dependiente" EntityType="Self.Dependiente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Parentesco" EntityType="Self.Parentesco" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Plan" EntityType="Self.Plan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoCuenta" EntityType="Self.TipoCuenta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Titular" EntityType="Self.Titular" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="dep_parent" Association="Self.dep_parent">
+      <End Role="Parentesco" EntitySet="Parentesco" />
+      <End Role="Dependiente" EntitySet="Dependiente" />
+    </AssociationSet>
+    <AssociationSet Name="dep_tit" Association="Self.dep_tit">
+      <End Role="Titular" EntitySet="Titular" />
+      <End Role="Dependiente" EntitySet="Dependiente" />
+    </AssociationSet>
+    <AssociationSet Name="tit_banco" Association="Self.tit_banco">
+      <End Role="Banco" EntitySet="Banco" />
+      <End Role="Titular" EntitySet="Titular" />
+    </AssociationSet>
+    <AssociationSet Name="tit_emp" Association="Self.tit_emp">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Titular" EntitySet="Titular" />
+    </AssociationSet>
+    <AssociationSet Name="tit_plan" Association="Self.tit_plan">
+      <End Role="Plan" EntitySet="Plan" />
+      <End Role="Titular" EntitySet="Titular" />
+    </AssociationSet>
+    <AssociationSet Name="tit_tipcuen" Association="Self.tit_tipcuen">
+      <End Role="TipoCuenta" EntitySet="TipoCuenta" />
+      <End Role="Titular" EntitySet="Titular" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

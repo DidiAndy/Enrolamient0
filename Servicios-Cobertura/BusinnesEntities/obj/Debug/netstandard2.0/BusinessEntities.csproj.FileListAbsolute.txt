@@ -1,0 +1,9 @@
+C:\Proyectos\Servicios-Cobertura\BusinnesEntities\bin\Debug\netstandard2.0\BusinessEntities.deps.json
+C:\Proyectos\Servicios-Cobertura\BusinnesEntities\bin\Debug\netstandard2.0\BusinessEntities.dll
+C:\Proyectos\Servicios-Cobertura\BusinnesEntities\bin\Debug\netstandard2.0\BusinessEntities.pdb
+C:\Proyectos\Servicios-Cobertura\BusinnesEntities\obj\Debug\netstandard2.0\BusinessEntities.csprojAssemblyReference.cache
+C:\Proyectos\Servicios-Cobertura\BusinnesEntities\obj\Debug\netstandard2.0\BusinessEntities.csproj.CoreCompileInputs.cache
+C:\Proyectos\Servicios-Cobertura\BusinnesEntities\obj\Debug\netstandard2.0\BusinessEntities.AssemblyInfoInputs.cache
+C:\Proyectos\Servicios-Cobertura\BusinnesEntities\obj\Debug\netstandard2.0\BusinessEntities.AssemblyInfo.cs
+C:\Proyectos\Servicios-Cobertura\BusinnesEntities\obj\Debug\netstandard2.0\BusinessEntities.dll
+C:\Proyectos\Servicios-Cobertura\BusinnesEntities\obj\Debug\netstandard2.0\BusinessEntities.pdb

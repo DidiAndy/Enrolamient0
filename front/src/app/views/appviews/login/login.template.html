@@ -1,0 +1,25 @@
+<div class="image-div" align="middle">
+    <img class="image-logo" src="logo.png">
+</div>
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+    <div>
+
+        <form #loginForm="ngForm" novalidate name="form" class="m-t" role="form">
+            <span class="texto">ENROLAMIENTO</span>
+            <div class="form-group">
+                <input type="text" name="userName" class="form-control" placeholder="Usuario" required>
+            </div>
+            <div class="form-group">
+                <input  type="password" name="password" class="form-control" placeholder="Contraseña" required>
+            </div>
+             <button type="submit" class="btn btn-warning block full-width m-b">Ingresar</button>
+            <button class="btn btn-primary"  type="button">
+                <i class="fa fa-rotate-left"></i>
+                <span class="bold">Restablecer Contraseña</span>
+            </button>
+        </form>
+        <p class="m-t">
+            <small>Copyright Equivida © 2018</small>
+        </p>
+    </div>
+</div>

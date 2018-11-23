@@ -1,0 +1,14 @@
+C:\Proyectos\Servicios-Cobertura\Servicio-Cobertura\bin\Debug\Servicio-Cobertura.exe.config
+C:\Proyectos\Servicios-Cobertura\Servicio-Cobertura\bin\Debug\Servicio-Cobertura.exe
+C:\Proyectos\Servicios-Cobertura\Servicio-Cobertura\bin\Debug\Servicio-Cobertura.pdb
+C:\Proyectos\Servicios-Cobertura\Servicio-Cobertura\obj\Debug\Servicio-Cobertura.csproj.CoreCompileInputs.cache
+C:\Proyectos\Servicios-Cobertura\Servicio-Cobertura\obj\Debug\Servicio-Cobertura.exe
+C:\Proyectos\Servicios-Cobertura\Servicio-Cobertura\obj\Debug\Servicio-Cobertura.pdb
+C:\Proyectos\Servicios-Cobertura\Servicio-Cobertura\obj\Debug\Servicio-Cobertura.csprojAssemblyReference.cache
+D:\Vimeworks\Enrolamiento\Servicios-Cobertura\Servicio-Cobertura\bin\Debug\Servicio-Cobertura.exe.config
+D:\Vimeworks\Enrolamiento\Servicios-Cobertura\Servicio-Cobertura\bin\Debug\Servicio-Cobertura.exe
+D:\Vimeworks\Enrolamiento\Servicios-Cobertura\Servicio-Cobertura\bin\Debug\Servicio-Cobertura.pdb
+D:\Vimeworks\Enrolamiento\Servicios-Cobertura\Servicio-Cobertura\obj\Debug\Servicio-Cobertura.csprojAssemblyReference.cache
+D:\Vimeworks\Enrolamiento\Servicios-Cobertura\Servicio-Cobertura\obj\Debug\Servicio-Cobertura.csproj.CoreCompileInputs.cache
+D:\Vimeworks\Enrolamiento\Servicios-Cobertura\Servicio-Cobertura\obj\Debug\Servicio-Cobertura.exe
+D:\Vimeworks\Enrolamiento\Servicios-Cobertura\Servicio-Cobertura\obj\Debug\Servicio-Cobertura.pdb

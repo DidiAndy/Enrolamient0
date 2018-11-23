@@ -1,0 +1,57 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-5"></div>
+        <div class="col-sm-4">
+            <h2>Reporte Excel</h2>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-8">
+                <form class="form-horizontal" #ReporteForm="ngForm" name="form">
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">EMPRESA:</label>
+                            <div class="col-sm-2">
+                                <select class="form-control" style="width: 200px" name="Empresa" #Sec_Empresa="ngModel" [(ngModel)]='reporte.sec_empresa'
+                                    RequiredSelect>
+                                    <option [ngValue]="0" disabled>Seleccione</option>
+                                    <option *ngFor="let empresas of empresa" [ngValue]="empresas.sec_empresa">{{empresas.descripcion}}</option>
+                                </select>
+                                <div *ngIf="Sec_Empresa.invalid && Sec_Empresa.touched">
+                                    <div class="avisos" *ngIf="Sec_Empresa.errors.required">
+                                        *Seleccione una Empresa.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">FECHA INICIAL:</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" style="width: 200px" type="text" class="form-control" #dpI="bsDatepicker" [maxDate]="fechaActual"
+                                    bsDatepicker [(bsValue)]="reporte.fch_inicio" (keydown)="prevent($event)" (contextmenu)="prevent($event)" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">FECHA FINAL:</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" style="width: 200px" type="text" class="form-control" [minDate]="reporte.fch_inicio" [maxDate]="fechaActual" [disabled]="reporte.fch_inicio == null" 
+                                #dpF="bsDatepicker" bsDatepicker [(bsValue)]="reporte.fch_final" required>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-7">
+                <br>
+                <button (click)="generar();" [disabled]="!ReporteForm.form.valid || reporte.fch_inicio == null || reporte.fch_final == null" class="btn btn-success">
+                    <span class="glyphicon glyphicon-floppy-saved"></span> Generar</button>
+            </div>
+        </div>
+    </div>
+</div>

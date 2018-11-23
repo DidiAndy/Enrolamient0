@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Cobertura</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+  <app-root></app-root>
+  <script>
+    function updateGroupTables(numOfColumns, groupColumn) {
+
+      var array = Array.apply(null, { length: numOfColumns }).map(Number.call, Number);
+      $('.dataTables-component').DataTable({
+        pageLength: 25,
+        responsive: true,
+        dom: '<"html5buttons"B>lTfgitp',
+        buttons: [
+          { extend: 'copy', exportOptions: { columns: array } },
+          { extend: 'csv', exportOptions: { columns: array } },
+          { extend: 'excel', title: 'ExportFile', exportOptions: { columns: array } },
+          { extend: 'pdf', title: 'ExportFile', exportOptions: { columns: array } },
+
+          {
+            extend: 'print', exportOptions: { columns: array },
+            customize: function (win) {
+              $(win.document.body).addClass('white-bg');
+              $(win.document.body).css('font-size', '10px');
+
+              $(win.document.body).find('table')
+                .addClass('compact')
+                .css('font-size', 'inherit');
+            }
+          }
+        ],
+        columnDefs: [
+          {
+            visible: false,
+            targets: groupColumn
+          }
+        ],
+        order: [],
+        drawCallback: function (settings) {
+          var api = this.api();
+          var rows = api.rows({ page: 'current' }).nodes();
+          var last = null;
+
+          api.column(groupColumn, { page: 'current' }).data().each(function (group, i) {
+            if (last !== group) {
+              $(rows).eq(i).before(
+                '<tr class="group"><td colspan="5"><strong>' + group + '</strong></td></tr>'
+              );
+
+              last = group;
+            }
+          });
+        }
+      });
+    }
+    function updateTables(numOfColumns, fileName) {
+      var array = Array.apply(null, { length: numOfColumns }).map(Number.call, Number);
+      var table = $('.dataTables-component').DataTable({
+        pageLength: 25,
+        aaSorting: [],
+        responsive: true,
+        dom: '<"html5buttons"B>lTfgitp',
+        buttons: [
+          // { extend: 'copy', exportOptions: { columns: array } },
+          // { extend: 'csv', exportOptions: { columns: array } },
+          // { extend: 'excel', title: fileName, exportOptions: { columns: array } },
+          // { extend: 'pdf', title: fileName, exportOptions: { columns: array } },
+          // {
+          //   extend: 'print', exportOptions: { columns: array },
+          //   customize: function (win) {
+          //     $(win.document.body).addClass('white-bg');
+          //     $(win.document.body).css('font-size', '10px');
+
+          //     $(win.document.body).find('table')
+          //       .addClass('compact')
+          //       .css('font-size', 'inherit');
+          //   }
+          // }
+        ],
+        initComplete: (settings, json) => {
+
+          $("div #" + settings.sTableId + "_filter").append('<label>Salario Mínimo: ' +
+            '<input class="form-control" type="text" id="minSalary"></label>' +
+            '<label>Salario Máximo: ' +
+            '<input class="form-control" type="text" id="maxSalary"></label>');
+        }
+      })
+
+
+      $.fn.dataTable.ext.search.push(
+        function (settings, data, dataIndex) {
+          var min = parseInt($('#minSalary').val(), 10);
+          var max = parseInt($('#maxSalary').val(), 10);
+          var age = parseFloat(data[5]) || 0; // use data for the age column         
+
+          if ((isNaN(min) && isNaN(max)) ||
+            (isNaN(min) && age <= max) ||
+            (min <= age && isNaN(max)) ||
+            (min <= age && age <= max)) {
+            return true;
+          }
+          return false;
+        }
+      );
+      $('#minSalary, #maxSalary').keyup(function () {
+        table.draw();
+      });
+    }    
+  </script>
+</body>
+
+</html>

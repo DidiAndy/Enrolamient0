@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://producer.ws.equivida.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://producer.ws.equivida.com/" />
+      <s:element name="processPackage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="processId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="processPackageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="processPackageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindIdentificationNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="identificationNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindIdentificationNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindIdentificationNumberResult" type="s1:personaSd" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://producer.ws.equivida.com/">
+      <s:complexType name="personaSd">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="secPersona" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="codTipoIdentificacion" type="s1:tipoIdentificacionSd" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="identificacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="denominacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="personaNatural" type="s1:personaNaturalSd" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="relacion" type="s1:relacionSd" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="relacionBase" type="s1:relacionSd" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="conyuge" type="s1:relacionSd" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="direccion" type="s1:direccionSd" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="telefonoSinDireccion" type="s1:telefonoSd" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="vehiculo" type="s1:vehiculoSd" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="tipoIdentificacionSd">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="tipoIdentificacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="codTipoIdentificacion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="personaNaturalSd">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="secPersonaNatural" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="tipoIdentificacion" type="s1:tipoIdentificacionSd" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="identificacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="apellidoPaterno" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="apellidoMaterno" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="primerNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="segundoNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="sexo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="fechaNacimiento" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="fechaMatrimonio" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="fechaFallecimiento" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="informacionAdicional" type="s1:informacionAdicionalSd" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="empleoDependiente" type="s1:empleoDependienteSd" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="profesion" type="s1:profesionSd" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="pais" type="s1:paisSd" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="estadoCivil" type="s1:estadoCivilSd" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="conyuge" type="s1:relacionSd" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="informacionAdicionalSd">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="secInformacionAdic" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="identificacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="razonSocial" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="nombreComercial" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="fechaInscripcion" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="fechaInicioActividades" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="fechaCancelacion" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="fechaSuspension" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="fechaReinicio" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="principal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="numero" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="secundaria" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="referencia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="telefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="eMail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="tipoIdentificacion" type="s1:tipoIdentificacionSd" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="provincia" type="s1:provinciaSd" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="parroquia" type="s1:parroquiaSd" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="canton" type="s1:cantonSd" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="actividadEconomica" type="s1:actividadEconomicaSd" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="provinciaSd">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="secProvincia" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="provincia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="codArea" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="parroquiaSd">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="secParroquia" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="parroquia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="cabecera" type="s:unsignedShort" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="cantonSd">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="secCanton" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="canton" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="actividadEconomicaSd">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="codActividadEconomica" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="actividadEconomicaSri" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="empleoDependienteSd">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="secEmpleoDependiente" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="cargo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="mntSalario" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="fechaIngreso" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="fechaSalida" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="empleador" type="s1:personaJuridicaSd" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="personaJuridicaSd">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="identificacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="razonSocial" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="actividadIess" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="profesionSd">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="codProfesionRc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="profesionRc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="secProfesion" type="s:short" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="paisSd">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="codPais" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="pais" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="estadoCivilSd">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="codEstadoCivil" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="estadoCivil" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="relacionSd">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="secRelacion" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="personaRelacion" type="s1:personaRelacionDto" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="personaRelacionDto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="identificacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="nombre" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="direccionSd">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="secDireccion" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="direccion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="tipoDireccion" type="s1:tipoDireccionSd" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="provincia" type="s1:provinciaSd" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="parroquia" type="s1:parroquiaSd" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="canton" type="s1:cantonSd" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="referencia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="principalTr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="numeroTr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="secundariaTr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="telefonoDireccion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="tipoDireccionSd">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="codTipoDireccion" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="tipoDireccion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="telefonoSd">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="secTelefono" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="codArea" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="nroTelefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="codTipoTelefono" type="s1:tipoTelefonoSd" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="tipoTelefonoSd">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="codTipoTelefono" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="tipoTelefono" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="vehiculoSd">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="secVehiculo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="placa" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="chasis" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="marca" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="avaluo" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="modelo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="anio" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="usrCreacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="tsCreacion" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="usrModificacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="tsModificacion" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="secCanal" type="s1:canalSd" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="canalSd">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="canal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="secCanal" type="s:short" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="processPackageSoapIn">
+    <wsdl:part name="parameters" element="tns:processPackage" />
+  </wsdl:message>
+  <wsdl:message name="processPackageSoapOut">
+    <wsdl:part name="parameters" element="tns:processPackageResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindIdentificationNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:FindIdentificationNumber" />
+  </wsdl:message>
+  <wsdl:message name="FindIdentificationNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:FindIdentificationNumberResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebService1Soap">
+    <wsdl:operation name="processPackage">
+      <wsdl:input message="tns:processPackageSoapIn" />
+      <wsdl:output message="tns:processPackageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindIdentificationNumber">
+      <wsdl:input message="tns:FindIdentificationNumberSoapIn" />
+      <wsdl:output message="tns:FindIdentificationNumberSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="processPackage">
+      <soap:operation soapAction="http://tempuri.org/processPackage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindIdentificationNumber">
+      <soap:operation soapAction="http://tempuri.org/FindIdentificationNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="processPackage">
+      <soap12:operation soapAction="http://tempuri.org/processPackage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindIdentificationNumber">
+      <soap12:operation soapAction="http://tempuri.org/FindIdentificationNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService1">
+    <wsdl:port name="WebService1Soap" binding="tns:WebService1Soap">
+      <soap:address location="http://localhost:63055/soap/WebService1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService1Soap12" binding="tns:WebService1Soap12">
+      <soap12:address location="http://localhost:63055/soap/WebService1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

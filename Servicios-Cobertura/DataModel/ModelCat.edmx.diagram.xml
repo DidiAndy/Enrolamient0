@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="757dd58637b3443a8486075c8c71e6a2" Name="Diagram1">
+        <EntityTypeShape EntityType="CatalogosModel.Banco" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatalogosModel.Dependiente" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatalogosModel.Empresa" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatalogosModel.Parentesco" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatalogosModel.Plan" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatalogosModel.TipoCuenta" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatalogosModel.Titular" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="CatalogosModel.tit_banco" ManuallyRouted="false" />
+        <AssociationConnector Association="CatalogosModel.dep_parent" ManuallyRouted="false" />
+        <AssociationConnector Association="CatalogosModel.dep_tit" ManuallyRouted="false" />
+        <AssociationConnector Association="CatalogosModel.tit_emp" ManuallyRouted="false" />
+        <AssociationConnector Association="CatalogosModel.tit_plan" ManuallyRouted="false" />
+        <AssociationConnector Association="CatalogosModel.tit_tipcuen" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CatalogosModel.VersionInfo" Width="1.5" PointX="6.125" PointY="6.25" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

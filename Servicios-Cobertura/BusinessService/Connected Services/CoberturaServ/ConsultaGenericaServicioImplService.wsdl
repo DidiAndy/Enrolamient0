@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://producer.ws.equivida.com/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="ConsultaGenericaServicioImplService" targetNamespace="http://producer.ws.equivida.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://producer.ws.equivida.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="consultaEnriquecida" type="tns:consultaEnriquecida" />
+      <xs:element name="consultaEnriquecidaResponse" type="tns:consultaEnriquecidaResponse" />
+      <xs:element name="consultaPorDocumentoClienteUnico" type="tns:consultaPorDocumentoClienteUnico" />
+      <xs:element name="consultaPorDocumentoClienteUnicoResponse" type="tns:consultaPorDocumentoClienteUnicoResponse" />
+      <xs:element name="consultaPorDocumentoDataBook" type="tns:consultaPorDocumentoDataBook" />
+      <xs:element name="consultaPorDocumentoDataBookResponse" type="tns:consultaPorDocumentoDataBookResponse" />
+      <xs:element name="consultaPorDocumentoSmartdata" type="tns:consultaPorDocumentoSmartdata" />
+      <xs:element name="consultaPorDocumentoSmartdataResponse" type="tns:consultaPorDocumentoSmartdataResponse" />
+      <xs:complexType name="consultaEnriquecida">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="noDocumento" type="xs:string" />
+          <xs:element minOccurs="0" name="usuario" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="consultaEnriquecidaResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="respuesta" type="tns:personaNatural" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="personaNatural">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="secPersonaNatural" type="xs:int" />
+          <xs:element minOccurs="0" name="identificacion" type="xs:string" />
+          <xs:element minOccurs="0" name="apellidoPaterno" type="xs:string" />
+          <xs:element minOccurs="0" name="apellidoMaterno" type="xs:string" />
+          <xs:element minOccurs="0" name="primerNombre" type="xs:string" />
+          <xs:element minOccurs="0" name="segundoNombre" type="xs:string" />
+          <xs:element name="sexo" type="xs:unsignedShort" />
+          <xs:element name="tipoEmpleo" type="xs:short" />
+          <xs:element name="numHijos" type="xs:short" />
+          <xs:element minOccurs="0" name="fechaNacimiento" type="xs:date" />
+          <xs:element minOccurs="0" name="mntSaldoMensual" type="xs:decimal" />
+          <xs:element minOccurs="0" name="fechaFallecimiento" type="xs:date" />
+          <xs:element minOccurs="0" name="informacionAdicional" type="tns:informacionAdicional" />
+          <xs:element minOccurs="0" name="tipoIdentificacion" type="tns:tipoIdentificacion" />
+          <xs:element minOccurs="0" name="profesion" type="tns:profesion" />
+          <xs:element minOccurs="0" name="persona" type="tns:persona" />
+          <xs:element minOccurs="0" name="paisNacionalidad" type="tns:pais" />
+          <xs:element minOccurs="0" name="ciudadNacimiento" type="tns:ciudad" />
+          <xs:element minOccurs="0" name="ocupacion" type="tns:ocupacion" />
+          <xs:element minOccurs="0" name="estadoCivil" type="tns:estadoCivil" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="otraOcupacionCollection" nillable="true" type="tns:otraOcupacion" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="habitoEnfermedadFormularioCollection" nillable="true" type="tns:habitoEnfermedad" />
+          <xs:element minOccurs="0" name="ingresoMensual" type="tns:ingresoMensual" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="empleoCollection" nillable="true" type="tns:empleoDto" />
+          <xs:element minOccurs="0" name="conyuge" type="tns:personaNatural" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="direccionList" nillable="true" type="tns:direccion" />
+          <xs:element minOccurs="0" name="identificacionOriginal" type="xs:string" />
+          <xs:element minOccurs="0" name="nombres" type="xs:string" />
+          <xs:element minOccurs="0" name="nombresApellidos" type="xs:string" />
+          <xs:element minOccurs="0" name="apellidosNombres" type="xs:string" />
+          <xs:element minOccurs="0" name="nombreApellido" type="xs:string" />
+          <xs:element minOccurs="0" name="apellidos" type="xs:string" />
+          <xs:element minOccurs="0" name="respuestaPep" type="xs:string" />
+          <xs:element minOccurs="0" name="edad" type="tns:edad" />
+          <xs:element minOccurs="0" name="error" type="xs:string" />
+          <xs:element name="casillaExtranjero" type="xs:boolean" />
+          <xs:element minOccurs="0" name="estiloApellidoPaterno" type="xs:string" />
+          <xs:element minOccurs="0" name="estiloApellidoMaterno" type="xs:string" />
+          <xs:element minOccurs="0" name="estiloPrimerNombre" type="xs:string" />
+          <xs:element minOccurs="0" name="estiloSegundoNombre" type="xs:string" />
+          <xs:element minOccurs="0" name="estiloSexo" type="xs:string" />
+          <xs:element minOccurs="0" name="estiloFchNacimiento" type="xs:string" />
+          <xs:element minOccurs="0" name="estiloPaisNacionalidad" type="xs:string" />
+          <xs:element minOccurs="0" name="estiloFchFallecimiento" type="xs:string" />
+          <xs:element minOccurs="0" name="estiloEstadoCivil" type="xs:string" />
+          <xs:element minOccurs="0" name="estiloConyuge" type="xs:string" />
+          <xs:element minOccurs="0" name="rucVerificarTransient" type="xs:string" />
+          <xs:element minOccurs="0" name="original" type="tns:personaNatural" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="informacionAdicional">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="secInformacionAdicional" type="xs:int" />
+          <xs:element minOccurs="0" name="piloto" type="xs:unsignedShort" />
+          <xs:element minOccurs="0" name="cilindraje" type="xs:int" />
+          <xs:element minOccurs="0" name="uso" type="xs:string" />
+          <xs:element minOccurs="0" name="accidentes" type="xs:string" />
+          <xs:element minOccurs="0" name="conduceMoto" type="xs:unsignedShort" />
+          <xs:element minOccurs="0" name="respuestaSN" type="xs:unsignedShort" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tipoIdentificacion">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codTipoIdentificacion" type="xs:unsignedShort" />
+          <xs:element minOccurs="0" name="secTipoIdentificacion" type="xs:short" />
+          <xs:element minOccurs="0" name="tipoIdentificacion" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="profesion">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="profesion" type="xs:string" />
+          <xs:element minOccurs="0" name="secProfesion" type="xs:short" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="persona">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="secPersona" type="xs:int" />
+          <xs:element minOccurs="0" name="denominacion" type="xs:string" />
+          <xs:element minOccurs="0" name="tipoIdentificacion" type="tns:tipoIdentificacion" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="telefonoSinDireccionCollection" nillable="true" type="tns:telefono" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="beneficiarioPolizaCollection" nillable="true" type="tns:beneficiarioPoliza" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="telefono">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="secTelefono" type="xs:int" />
+          <xs:element minOccurs="0" name="codArea" type="xs:string" />
+          <xs:element minOccurs="0" name="nroTelefono" type="xs:string" />
+          <xs:element minOccurs="0" name="extTelefono" type="xs:string" />
+          <xs:element minOccurs="0" name="tipoTelefono" type="tns:tipoTelefono" />
+          <xs:element minOccurs="0" name="pais" type="tns:pais" />
+          <xs:element minOccurs="0" name="original" type="tns:telefono" />
+          <xs:element minOccurs="0" name="principal" type="xs:boolean" />
+          <xs:element minOccurs="0" name="telefonoConCodigoAreaAnterior" type="xs:string" />
+          <xs:element name="estado" type="xs:unsignedShort" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tipoTelefono">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codTipoTelefono" type="xs:short" />
+          <xs:element name="codigoVisible" type="xs:unsignedShort" />
+          <xs:element name="reqDireccion" type="xs:unsignedShort" />
+          <xs:element minOccurs="0" name="tipoTelefono" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="pais">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codPais" type="xs:short" />
+          <xs:element minOccurs="0" name="pais" type="xs:string" />
+          <xs:element name="prfTelefonico" type="xs:short" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="beneficiarioPoliza">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="beneficiario" type="tns:beneficiario" />
+          <xs:element minOccurs="0" name="encontradoBeneficiarioEnum" type="tns:encontradoBeneficiarioEnum" />
+          <xs:element minOccurs="0" name="interviniente" type="tns:interviniente" />
+          <xs:element minOccurs="0" name="pctBeneficio" type="xs:decimal" />
+          <xs:element minOccurs="0" name="secBeneficiarioPoliza" type="xs:int" />
+          <xs:element name="tipoBeneficiario" type="xs:unsignedShort" />
+          <xs:element minOccurs="0" name="tipoParentescoRelacion" type="tns:tipoParentescoRelacion" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="beneficiario">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="apellidoMaterno" type="xs:string" />
+          <xs:element minOccurs="0" name="apellidoPaterno" type="xs:string" />
+          <xs:element minOccurs="0" name="apellidos" type="xs:string" />
+          <xs:element minOccurs="0" name="denominacion" type="xs:string" />
+          <xs:element minOccurs="0" name="identificacion" type="xs:string" />
+          <xs:element minOccurs="0" name="nombres" type="xs:string" />
+          <xs:element minOccurs="0" name="nombresApellidos" type="xs:string" />
+          <xs:element minOccurs="0" name="primerNombre" type="xs:string" />
+          <xs:element minOccurs="0" name="secBeneficiario" type="xs:int" />
+          <xs:element minOccurs="0" name="segundoNombre" type="xs:string" />
+          <xs:element minOccurs="0" name="tipoIdentificacion" type="tns:tipoIdentificacion" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="interviniente">
+        <xs:sequence>
+          <xs:element name="estPoliza" type="xs:unsignedShort" />
+          <xs:element minOccurs="0" name="nroPoliza" type="xs:string" />
+          <xs:element minOccurs="0" name="persona" type="tns:persona" />
+          <xs:element minOccurs="0" name="producto" type="tns:producto" />
+          <xs:element minOccurs="0" name="secInterviniente" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="producto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codProducto" type="xs:short" />
+          <xs:element minOccurs="0" name="producto" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tipoParentescoRelacion">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codTipoParentesco" type="xs:short" />
+          <xs:element name="flgFamiliar" type="xs:unsignedShort" />
+          <xs:element minOccurs="0" name="tipoParentesco" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ciudad">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ciudad" type="xs:string" />
+          <xs:element minOccurs="0" name="pais" type="tns:pais" />
+          <xs:element minOccurs="0" name="secCiudad" type="xs:short" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ocupacion">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codOcupacion" type="xs:short" />
+          <xs:element minOccurs="0" name="ocupacion" type="xs:string" />
+          <xs:element minOccurs="0" name="tipoRiesgo" type="tns:tipoRiesgo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tipoRiesgo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codTipoRiesgo" type="xs:short" />
+          <xs:element name="tipoRiesgo" type="xs:unsignedShort" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="estadoCivil">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codEstadoCivil" type="xs:short" />
+          <xs:element name="codigoVisible" type="xs:unsignedShort" />
+          <xs:element minOccurs="0" name="estadoCivil" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otraOcupacion">
+        <xs:sequence>
+          <xs:element name="codTiempo" type="xs:unsignedShort" />
+          <xs:element name="estado" type="xs:unsignedShort" />
+          <xs:element minOccurs="0" name="secOtraOcupacion" type="xs:int" />
+          <xs:element minOccurs="0" name="secPersonaNatural" type="xs:int" />
+          <xs:element minOccurs="0" name="tiempoOcupacion" type="xs:decimal" />
+          <xs:element minOccurs="0" name="tipoOtraOcupacion" type="tns:tipoOtraOcupacion" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tipoOtraOcupacion">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codOtraOcupacion" type="xs:short" />
+          <xs:element minOccurs="0" name="otraOcupacion" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="habitoEnfermedad">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="detalleHabitoEnfermedadFormularioCollection" nillable="true" type="tns:detalleHabitoEnfermedad" />
+          <xs:element minOccurs="0" name="personaNatural" type="tns:personaNatural" />
+          <xs:element minOccurs="0" name="respuesta" type="xs:unsignedShort" />
+          <xs:element minOccurs="0" name="secHabitoEnfermedad" type="xs:int" />
+          <xs:element minOccurs="0" name="tipoHabitoEnfermedad" type="tns:tipoHabitoEnfermedad" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="detalleHabitoEnfermedad">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="detalle" type="xs:string" />
+          <xs:element minOccurs="0" name="detalleDouble" type="xs:double" />
+          <xs:element minOccurs="0" name="habitoEnfermedad" type="tns:habitoEnfermedad" />
+          <xs:element minOccurs="0" name="preguntaHabitoEnfermedad" type="tns:preguntaHabitoEnfermedad" />
+          <xs:element minOccurs="0" name="secDetalle" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="preguntaHabitoEnfermedad">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codPregunta" type="xs:int" />
+          <xs:element minOccurs="0" name="limiteInferior" type="xs:decimal" />
+          <xs:element minOccurs="0" name="limiteSuperior" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pregunta" type="xs:string" />
+          <xs:element minOccurs="0" name="tipoDato" type="xs:unsignedShort" />
+          <xs:element minOccurs="0" name="tipoHabitoEnfermedad" type="tns:tipoHabitoEnfermedad" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tipoHabitoEnfermedad">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codTipoHabito" type="xs:short" />
+          <xs:element name="detallar" type="xs:unsignedShort" />
+          <xs:element name="indicador" type="xs:unsignedShort" />
+          <xs:element name="sexo" type="xs:unsignedShort" />
+          <xs:element minOccurs="0" name="tipoHabito" type="xs:string" />
+          <xs:element name="valor" type="xs:unsignedShort" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ingresoMensual">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="secIngresoPersona" type="xs:int" />
+          <xs:element minOccurs="0" name="mntIngresoMensual" type="xs:decimal" />
+          <xs:element minOccurs="0" name="mntEgresoMensual" type="xs:decimal" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="empleoDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="actividadEconomicaId" type="xs:short" />
+          <xs:element minOccurs="0" name="actividadEconomicaNombre" type="xs:string" />
+          <xs:element minOccurs="0" name="cargo" type="xs:string" />
+          <xs:element name="codTiempo" type="xs:unsignedShort" />
+          <xs:element name="estado" type="xs:unsignedShort" />
+          <xs:element name="mensajeTr" type="xs:boolean" />
+          <xs:element minOccurs="0" name="negocioEmpresaNombre" type="xs:string" />
+          <xs:element minOccurs="0" name="secEmpleo" type="xs:int" />
+          <xs:element minOccurs="0" name="tiempoEmpresa" type="xs:decimal" />
+          <xs:element minOccurs="0" name="tipoEmpleo" type="xs:short" />
+          <xs:element minOccurs="0" name="tipoEmpleoNombre" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="direccion">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="secDireccion" type="xs:int" />
+          <xs:element minOccurs="0" name="principal" type="xs:string" />
+          <xs:element minOccurs="0" name="numero" type="xs:string" />
+          <xs:element minOccurs="0" name="secundaria" type="xs:string" />
+          <xs:element minOccurs="0" name="barrio" type="xs:string" />
+          <xs:element minOccurs="0" name="edificio" type="xs:string" />
+          <xs:element minOccurs="0" name="piso" type="xs:string" />
+          <xs:element minOccurs="0" name="oficina" type="xs:string" />
+          <xs:element minOccurs="0" name="referencia" type="xs:string" />
+          <xs:element minOccurs="0" name="tipoDireccion" type="tns:tipoDireccion" />
+          <xs:element minOccurs="0" name="canton" type="tns:canton" />
+          <xs:element minOccurs="0" name="ciudad" type="xs:string" />
+          <xs:element minOccurs="0" name="original" type="tns:direccion" />
+          <xs:element name="mostrarNoCargoLW" type="xs:boolean" />
+          <xs:element minOccurs="0" name="direccionCompleta" type="xs:string" />
+          <xs:element minOccurs="0" name="parroquia" type="xs:string" />
+          <xs:element minOccurs="0" name="estiloDireccion" type="xs:string" />
+          <xs:element name="tieneDireccionCompleta" type="xs:boolean" />
+          <xs:element minOccurs="0" name="direccionPrincipal" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tipoDireccion">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codTipoDireccion" type="xs:short" />
+          <xs:element minOccurs="0" name="tipoDireccion" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="canton">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="secCanton" type="xs:short" />
+          <xs:element minOccurs="0" name="canton" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="edad">
+        <xs:sequence>
+          <xs:element name="anios" type="xs:int" />
+          <xs:element name="dias" type="xs:int" />
+          <xs:element minOccurs="0" name="edadTotal" type="xs:string" />
+          <xs:element name="meses" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="consultaPorDocumentoClienteUnico">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="noDocumento" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="consultaPorDocumentoClienteUnicoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="respuesta" type="tns:personaNatural" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="consultaPorDocumentoSmartdata">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="noDocumento" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="consultaPorDocumentoSmartdataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="respuesta" type="tns:personaSd" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="personaSd">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="secPersona" type="xs:int" />
+          <xs:element minOccurs="0" name="codTipoIdentificacion" type="tns:tipoIdentificacionSd" />
+          <xs:element minOccurs="0" name="identificacion" type="xs:string" />
+          <xs:element minOccurs="0" name="denominacion" type="xs:string" />
+          <xs:element minOccurs="0" name="personaNatural" type="tns:personaNaturalSd" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="relacion" type="tns:relacionSd" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="relacionBase" type="tns:relacionSd" />
+          <xs:element minOccurs="0" name="conyuge" type="tns:relacionSd" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="direccion" type="tns:direccionSd" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="telefonoSinDireccion" type="tns:telefonoSd" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="vehiculo" type="tns:vehiculoSd" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tipoIdentificacionSd">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="tipoIdentificacion" type="xs:string" />
+          <xs:element minOccurs="0" name="codTipoIdentificacion" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="personaNaturalSd">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="secPersonaNatural" type="xs:int" />
+          <xs:element minOccurs="0" name="tipoIdentificacion" type="tns:tipoIdentificacionSd" />
+          <xs:element minOccurs="0" name="identificacion" type="xs:string" />
+          <xs:element minOccurs="0" name="apellidoPaterno" type="xs:string" />
+          <xs:element minOccurs="0" name="apellidoMaterno" type="xs:string" />
+          <xs:element minOccurs="0" name="primerNombre" type="xs:string" />
+          <xs:element minOccurs="0" name="segundoNombre" type="xs:string" />
+          <xs:element minOccurs="0" name="sexo" type="xs:string" />
+          <xs:element minOccurs="0" name="fechaNacimiento" type="xs:date" />
+          <xs:element minOccurs="0" name="fechaMatrimonio" type="xs:date" />
+          <xs:element minOccurs="0" name="fechaFallecimiento" type="xs:date" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="informacionAdicional" type="tns:informacionAdicionalSd" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="empleoDependiente" type="tns:empleoDependienteSd" />
+          <xs:element minOccurs="0" name="profesion" type="tns:profesionSd" />
+          <xs:element minOccurs="0" name="pais" type="tns:paisSd" />
+          <xs:element minOccurs="0" name="estadoCivil" type="tns:estadoCivilSd" />
+          <xs:element minOccurs="0" name="conyuge" type="tns:relacionSd" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="informacionAdicionalSd">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="secInformacionAdic" type="xs:int" />
+          <xs:element minOccurs="0" name="identificacion" type="xs:string" />
+          <xs:element minOccurs="0" name="razonSocial" type="xs:string" />
+          <xs:element minOccurs="0" name="nombreComercial" type="xs:string" />
+          <xs:element minOccurs="0" name="fechaInscripcion" type="xs:date" />
+          <xs:element minOccurs="0" name="fechaInicioActividades" type="xs:date" />
+          <xs:element minOccurs="0" name="fechaCancelacion" type="xs:date" />
+          <xs:element minOccurs="0" name="fechaSuspension" type="xs:date" />
+          <xs:element minOccurs="0" name="fechaReinicio" type="xs:date" />
+          <xs:element minOccurs="0" name="principal" type="xs:string" />
+          <xs:element minOccurs="0" name="numero" type="xs:string" />
+          <xs:element minOccurs="0" name="secundaria" type="xs:string" />
+          <xs:element minOccurs="0" name="referencia" type="xs:string" />
+          <xs:element minOccurs="0" name="telefono" type="xs:string" />
+          <xs:element minOccurs="0" name="eMail" type="xs:string" />
+          <xs:element minOccurs="0" name="tipoIdentificacion" type="tns:tipoIdentificacionSd" />
+          <xs:element minOccurs="0" name="provincia" type="tns:provinciaSd" />
+          <xs:element minOccurs="0" name="parroquia" type="tns:parroquiaSd" />
+          <xs:element minOccurs="0" name="canton" type="tns:cantonSd" />
+          <xs:element minOccurs="0" name="actividadEconomica" type="tns:actividadEconomicaSd" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="provinciaSd">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="secProvincia" type="xs:short" />
+          <xs:element minOccurs="0" name="provincia" type="xs:string" />
+          <xs:element minOccurs="0" name="codArea" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="parroquiaSd">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="secParroquia" type="xs:short" />
+          <xs:element minOccurs="0" name="parroquia" type="xs:string" />
+          <xs:element minOccurs="0" name="cabecera" type="xs:unsignedShort" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="cantonSd">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="secCanton" type="xs:short" />
+          <xs:element minOccurs="0" name="canton" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="actividadEconomicaSd">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codActividadEconomica" type="xs:short" />
+          <xs:element minOccurs="0" name="actividadEconomicaSri" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="empleoDependienteSd">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="secEmpleoDependiente" type="xs:int" />
+          <xs:element minOccurs="0" name="cargo" type="xs:string" />
+          <xs:element minOccurs="0" name="mntSalario" type="xs:decimal" />
+          <xs:element minOccurs="0" name="fechaIngreso" type="xs:date" />
+          <xs:element minOccurs="0" name="fechaSalida" type="xs:date" />
+          <xs:element minOccurs="0" name="empleador" type="tns:personaJuridicaSd" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="personaJuridicaSd">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="identificacion" type="xs:string" />
+          <xs:element minOccurs="0" name="razonSocial" type="xs:string" />
+          <xs:element minOccurs="0" name="actividadIess" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="profesionSd">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codProfesionRc" type="xs:string" />
+          <xs:element minOccurs="0" name="profesionRc" type="xs:string" />
+          <xs:element minOccurs="0" name="secProfesion" type="xs:short" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="paisSd">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codPais" type="xs:short" />
+          <xs:element minOccurs="0" name="pais" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="estadoCivilSd">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codEstadoCivil" type="xs:short" />
+          <xs:element minOccurs="0" name="estadoCivil" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="relacionSd">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="secRelacion" type="xs:int" />
+          <xs:element minOccurs="0" name="personaRelacion" type="tns:personaRelacionDto" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="personaRelacionDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="identificacion" type="xs:string" />
+          <xs:element minOccurs="0" name="nombre" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="direccionSd">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="secDireccion" type="xs:int" />
+          <xs:element minOccurs="0" name="direccion" type="xs:string" />
+          <xs:element minOccurs="0" name="tipoDireccion" type="tns:tipoDireccionSd" />
+          <xs:element minOccurs="0" name="provincia" type="tns:provinciaSd" />
+          <xs:element minOccurs="0" name="parroquia" type="tns:parroquiaSd" />
+          <xs:element minOccurs="0" name="canton" type="tns:cantonSd" />
+          <xs:element minOccurs="0" name="referencia" type="xs:string" />
+          <xs:element minOccurs="0" name="principalTr" type="xs:string" />
+          <xs:element minOccurs="0" name="numeroTr" type="xs:string" />
+          <xs:element minOccurs="0" name="secundariaTr" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="telefonoDireccion" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tipoDireccionSd">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codTipoDireccion" type="xs:short" />
+          <xs:element minOccurs="0" name="tipoDireccion" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="telefonoSd">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="secTelefono" type="xs:int" />
+          <xs:element minOccurs="0" name="codArea" type="xs:string" />
+          <xs:element minOccurs="0" name="nroTelefono" type="xs:string" />
+          <xs:element minOccurs="0" name="codTipoTelefono" type="tns:tipoTelefonoSd" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tipoTelefonoSd">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codTipoTelefono" type="xs:short" />
+          <xs:element minOccurs="0" name="tipoTelefono" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="vehiculoSd">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="secVehiculo" type="xs:int" />
+          <xs:element minOccurs="0" name="placa" type="xs:string" />
+          <xs:element minOccurs="0" name="chasis" type="xs:string" />
+          <xs:element minOccurs="0" name="marca" type="xs:string" />
+          <xs:element minOccurs="0" name="avaluo" type="xs:decimal" />
+          <xs:element minOccurs="0" name="modelo" type="xs:string" />
+          <xs:element name="anio" type="xs:int" />
+          <xs:element minOccurs="0" name="usrCreacion" type="xs:string" />
+          <xs:element minOccurs="0" name="tsCreacion" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="usrModificacion" type="xs:string" />
+          <xs:element minOccurs="0" name="tsModificacion" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="secCanal" type="tns:canalSd" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="canalSd">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="canal" type="xs:string" />
+          <xs:element minOccurs="0" name="secCanal" type="xs:short" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="consultaPorDocumentoDataBook">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="noDocumento" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="consultaPorDocumentoDataBookResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="respuesta" type="tns:personaSd" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="encontradoBeneficiarioEnum">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="NO_ENCONTRO" />
+          <xs:enumeration value="ENCONTRO_EN_BENEFICIARIO" />
+          <xs:enumeration value="ENCONTRO_EN_PERSONA_NATURAL" />
+          <xs:enumeration value="ENCONTRO_EN_PERSONA_JURIDICA" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="consultaPorDocumentoDataBook">
+    <wsdl:part name="parameters" element="tns:consultaPorDocumentoDataBook" />
+  </wsdl:message>
+  <wsdl:message name="consultaPorDocumentoSmartdataResponse">
+    <wsdl:part name="parameters" element="tns:consultaPorDocumentoSmartdataResponse" />
+  </wsdl:message>
+  <wsdl:message name="consultaPorDocumentoSmartdata">
+    <wsdl:part name="parameters" element="tns:consultaPorDocumentoSmartdata" />
+  </wsdl:message>
+  <wsdl:message name="consultaEnriquecidaResponse">
+    <wsdl:part name="parameters" element="tns:consultaEnriquecidaResponse" />
+  </wsdl:message>
+  <wsdl:message name="consultaPorDocumentoDataBookResponse">
+    <wsdl:part name="parameters" element="tns:consultaPorDocumentoDataBookResponse" />
+  </wsdl:message>
+  <wsdl:message name="consultaEnriquecida">
+    <wsdl:part name="parameters" element="tns:consultaEnriquecida" />
+  </wsdl:message>
+  <wsdl:message name="consultaPorDocumentoClienteUnicoResponse">
+    <wsdl:part name="parameters" element="tns:consultaPorDocumentoClienteUnicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="consultaPorDocumentoClienteUnico">
+    <wsdl:part name="parameters" element="tns:consultaPorDocumentoClienteUnico" />
+  </wsdl:message>
+  <wsdl:portType name="ConsultaGenericaServicioImpl">
+    <wsdl:operation name="consultaEnriquecida">
+      <wsdl:input name="consultaEnriquecida" message="tns:consultaEnriquecida" />
+      <wsdl:output name="consultaEnriquecidaResponse" message="tns:consultaEnriquecidaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="consultaPorDocumentoClienteUnico">
+      <wsdl:input name="consultaPorDocumentoClienteUnico" message="tns:consultaPorDocumentoClienteUnico" />
+      <wsdl:output name="consultaPorDocumentoClienteUnicoResponse" message="tns:consultaPorDocumentoClienteUnicoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="consultaPorDocumentoSmartdata">
+      <wsdl:input name="consultaPorDocumentoSmartdata" message="tns:consultaPorDocumentoSmartdata" />
+      <wsdl:output name="consultaPorDocumentoSmartdataResponse" message="tns:consultaPorDocumentoSmartdataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="consultaPorDocumentoDataBook">
+      <wsdl:input name="consultaPorDocumentoDataBook" message="tns:consultaPorDocumentoDataBook" />
+      <wsdl:output name="consultaPorDocumentoDataBookResponse" message="tns:consultaPorDocumentoDataBookResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ConsultaGenericaServicioImplServiceSoapBinding" type="tns:ConsultaGenericaServicioImpl">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="consultaEnriquecida">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="consultaEnriquecida">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="consultaEnriquecidaResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultaPorDocumentoClienteUnico">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="consultaPorDocumentoClienteUnico">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="consultaPorDocumentoClienteUnicoResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultaPorDocumentoSmartdata">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="consultaPorDocumentoSmartdata">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="consultaPorDocumentoSmartdataResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultaPorDocumentoDataBook">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="consultaPorDocumentoDataBook">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="consultaPorDocumentoDataBookResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ConsultaGenericaServicioImplService">
+    <wsdl:port name="ConsultaGenericaServicioImplPort" binding="tns:ConsultaGenericaServicioImplServiceSoapBinding">
+      <soap:address location="http://eqesbp01:8080/equivida-consulta-ws-producer-1.0/ConsultaGenericaServicioImpl" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

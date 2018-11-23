@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EnrolamientoModelStoreContainer" CdmEntityContainer="EnrolamientoEntities">
+    <EntitySetMapping Name="Banco">
+      <EntityTypeMapping TypeName="EnrolamientoModel.Banco">
+        <MappingFragment StoreEntitySet="Banco">
+          <ScalarProperty Name="sec_banco" ColumnName="sec_banco" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dependiente">
+      <EntityTypeMapping TypeName="EnrolamientoModel.Dependiente">
+        <MappingFragment StoreEntitySet="Dependiente">
+          <ScalarProperty Name="sec_dependiente" ColumnName="sec_dependiente" />
+          <ScalarProperty Name="cedula_dependiente" ColumnName="cedula_dependiente" />
+          <ScalarProperty Name="primer_nombre" ColumnName="primer_nombre" />
+          <ScalarProperty Name="segundo_nombre" ColumnName="segundo_nombre" />
+          <ScalarProperty Name="primer_apellido" ColumnName="primer_apellido" />
+          <ScalarProperty Name="segundo_apellido" ColumnName="segundo_apellido" />
+          <ScalarProperty Name="sec_parentesco" ColumnName="sec_parentesco" />
+          <ScalarProperty Name="sec_titular" ColumnName="sec_titular" />
+          <ScalarProperty Name="sec_tipoDoc" ColumnName="sec_tipoDoc" />
+          <ScalarProperty Name="fecha_Nacimiento" ColumnName="fecha_Nacimiento" />
+          <ScalarProperty Name="genero" ColumnName="genero" />
+          <ScalarProperty Name="fecha_Creacion" ColumnName="fecha_Creacion" />
+          <ScalarProperty Name="otro_paretesco" ColumnName="otro_paretesco" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empresa">
+      <EntityTypeMapping TypeName="EnrolamientoModel.Empresa">
+        <MappingFragment StoreEntitySet="Empresa">
+          <ScalarProperty Name="sec_empresa" ColumnName="sec_empresa" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="logotipo" ColumnName="logotipo" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parentesco">
+      <EntityTypeMapping TypeName="EnrolamientoModel.Parentesco">
+        <MappingFragment StoreEntitySet="Parentesco">
+          <ScalarProperty Name="sec_parentesco" ColumnName="sec_parentesco" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Plan">
+      <EntityTypeMapping TypeName="EnrolamientoModel.Plan">
+        <MappingFragment StoreEntitySet="Plan">
+          <ScalarProperty Name="sec_plan" ColumnName="sec_plan" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoCuenta">
+      <EntityTypeMapping TypeName="EnrolamientoModel.TipoCuenta">
+        <MappingFragment StoreEntitySet="TipoCuenta">
+          <ScalarProperty Name="sec_tipoCuenta" ColumnName="sec_tipoCuenta" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Titular">
+      <EntityTypeMapping TypeName="EnrolamientoModel.Titular">
+        <MappingFragment StoreEntitySet="Titular">
+          <ScalarProperty Name="div_pago" ColumnName="div_pago" />
+          <ScalarProperty Name="sec_titular" ColumnName="sec_titular" />
+          <ScalarProperty Name="cedula_titular" ColumnName="cedula_titular" />
+          <ScalarProperty Name="primer_nombre" ColumnName="primer_nombre" />
+          <ScalarProperty Name="segundo_nombre" ColumnName="segundo_nombre" />
+          <ScalarProperty Name="primer_apellido" ColumnName="primer_apellido" />
+          <ScalarProperty Name="segundo_apellido" ColumnName="segundo_apellido" />
+          <ScalarProperty Name="sec_plan" ColumnName="sec_plan" />
+          <ScalarProperty Name="valor_total" ColumnName="valor_total" />
+          <ScalarProperty Name="sec_tipoCuenta" ColumnName="sec_tipoCuenta" />
+          <ScalarProperty Name="noCuenta" ColumnName="noCuenta" />
+          <ScalarProperty Name="sec_banco" ColumnName="sec_banco" />
+          <ScalarProperty Name="sec_empresa" ColumnName="sec_empresa" />
+          <ScalarProperty Name="sec_tipoDoc" ColumnName="sec_tipoDoc" />
+          <ScalarProperty Name="fecha_Nacimiento" ColumnName="fecha_Nacimiento" />
+          <ScalarProperty Name="genero" ColumnName="genero" />
+          <ScalarProperty Name="fecha_Creacion" ColumnName="fecha_Creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

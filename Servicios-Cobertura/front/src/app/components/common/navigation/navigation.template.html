@@ -1,0 +1,35 @@
+<!-- <nav class="navbar-default navbar-static-side" role="navigation">
+  <div class="sidebar-collapse">
+    <ul class="nav metismenu" id="side-menu">
+      <li class="nav-header">
+        <div class="profile-element" dropdown>
+          <a dropdownToggle>
+            <span class="block m-t-xs">
+              <strong class="font-bold">Gestión de Pasos a Producción</strong>
+            </span>
+          </a>
+          <ul class="animated fadeInRight dropdown-menu" *dropdownMenu>
+            <li>
+              <a href="#">Logout</a>
+            </li>
+          </ul>
+        </div>
+        <div class="logo-element">
+          IN+
+        </div>
+      </li>
+      <li *ngFor='let parentMenu of parentMenus' [ngClass]="{active: activeRoute(parentMenu.Route)}">
+        <a *ngIf="parentMenu.Childs != null" href="#/{{parentMenu.Route}}">        
+          <i class="fa fa-th-large"></i>
+          <span *ngIf="parentMenu.Childs != null" class="nav-label">{{parentMenu.Name}}</span>
+          <span *ngIf="parentMenu.Childs != null" class="fa arrow"></span>
+        </a>
+        <ul *ngIf="parentMenu.Childs != null" class="nav nav-second-level collapse" [ngClass]="{in: activeRoute(parentMenu.Route)}">
+          <li *ngFor="let childMenu of parentMenu.Childs" [ngClass]="{active: activeRoute(childMenu.Route)}">
+            <a [routerLink]="[childMenu.Route]">{{childMenu.Name}}</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav> -->

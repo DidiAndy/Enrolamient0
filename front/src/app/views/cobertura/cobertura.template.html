@@ -1,0 +1,490 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <form class="form-horizontal">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-8">
+                <img src="./assets/images/{{imagen}}" />
+            </div>
+        </form>
+    </div>
+    <br>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <form class="form-horizontal" #TitularForm="ngForm" name="form">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-9">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="formGroup" style="text-align:left">TIPO DE
+                        IDENTIFICACIÓN:</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" name="tipoIdentificacion" #tipoDat="ngModel" [(ngModel)]='titular.sec_tipoDoc'
+                            (change)="cambioTipo();documento(titular.sec_tipoDoc);blanquear();">
+                            <option [ngValue]="0" disabled>Seleccionar</option>
+                            <option *ngFor="let tipos of tipoDoc" [ngValue]="tipos.Id">{{tipos.IdentificationType}}</option>
+                        </select>
+                        <div *ngIf="tipoDat.invalid && (tipoDat.touched || tipoDat.dirty)">
+                            <div class="avisos" *ngIf="tipoDat.errors.required">
+                                *Seleccione Tipo de Identificación.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" *ngIf="cedulaTit">
+                    <label class="col-sm-4 control-label" for="formGroup" style="text-align:left">No IDENTIFICACIÓN:</label>
+                    <div class="col-sm-6">
+                        <input class="form-control" type="text" id="formGroup" name="NoIdentificacionTit_" [(ngModel)]="titular.NoIdentificacion"
+                            placeholder="Ingresar Cedula" (focusout)="obtenerDatosLocal(cedTit.valid);" maxlength="10"
+                            identificationNumber #cedTit="ngModel" required>
+                        <div class="avisos" *ngIf="cedTit.invalid && (cedTit.touched || cedTit.dirty)">
+                            <div class="avisos" *ngIf="cedTit.errors.pattern">
+                                Cedula Incorrecta
+                            </div>
+                            <div class="avisos" *ngIf="cedTit.errors.required">
+                                * Cedula Requerida.
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" *ngIf="titular.sec_tipoDoc != 0 && pasTit">
+                    <label class="col-sm-4 control-label" for="formGroup" style="text-align:left">No IDENTIFICACIÓN:</label>
+                    <div class="col-sm-6">
+                        <input class="form-control" type="text" id="formGroup" name="NoIdentificacionTit_" maxlength="15"
+                            [(ngModel)]="titular.NoIdentificacion" (focusout)="obtenerDatosLocalP();" placeholder="Ingresar Pasaporte"
+                            #cedPas="ngModel" required>
+                        <div class="avisos" *ngIf="cedPas.invalid && (cedPas.touched || cedPas.dirty)">
+                            * Pasaporte Requerido.
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="formGroup" style="text-align:left">PRIMER NOMBRE:</label>
+                    <div class="col-sm-6">
+                        <input class="form-control" style="text-transform:uppercase;" type="text" id="formGroup" name="firstNameTit_" maxlength="20"
+                            #nombTit1="ngModel" texto [(ngModel)]="titular.PrimerNombre" #titnom1="ngModel" required>
+                        <div *ngIf="nombTit1.invalid  && (nombTit1.touched || nombTit1.dirty)">
+                            <div class="avisos" *ngIf="nombTit1.errors.required">
+                                *Ingrese Primer Nombre del Titular.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="formGroup" style="text-align:left">SEGUNDO NOMBRE:</label>
+                    <div class="col-sm-6">
+                        <input class="form-control" style="text-transform:uppercase;" type="text" id="formGroup" #titnom2="ngModel" name="secondNameTit_"
+                            maxlength="20" texto [(ngModel)]="titular.SegundoNombre">
+                        <div *ngIf="titnom2.invalid && (titnom2.touched || titnom2.dirty)">
+                            <div class="avisos" *ngIf="titnom2.errors.required">
+                                *Ingrese Segundo Nombre del Titular.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="formGroup" style="text-align:left">PRIMER APELLIDO:</label>
+                    <div class="col-sm-6">
+                        <input class="form-control" style="text-transform:uppercase;" #primerAp="ngModel" type="text" id="formGroup" name="lastNameTit1_"
+                            maxlength="20" texto [(ngModel)]="titular.PrimerApellido" required>
+                        <div *ngIf="primerAp.invalid && (primerAp.touched || primerAp.dirty)">
+                            <div class="avisos" *ngIf="primerAp.errors.required">
+                                *Ingrese Primer Apellido.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="formGroup" style="text-align:left">SEGUNDO APELLIDO:</label>
+                    <div class="col-sm-6">
+                        <input class="form-control" style="text-transform:uppercase;" type="text" #SegAp="ngModel" id="formGroup" name="lastNameTit2_"
+                            maxlength="20" texto [(ngModel)]="titular.SegundoApellido">
+                        <div *ngIf="SegAp.invalid && (SegAp.touched || SegAp.dirty)">
+                            <div class="avisos" *ngIf="SegAp.errors.required">
+                                *Ingrese Segundo Apellido.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="formGroup" style="text-align:left">FECHA DE NACIMIENTO:</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" (change)="cambioFecha" #dp="bsDatepicker" bsDatepicker
+                            [(bsValue)]="titular.Fecha_Nacimiento" dateFormat="dd-MMM-yyyy" [maxDate]="fechaActual"
+                            required>
+                        <div *ngIf="SegAp.invalid && (SegAp.touched || SegAp.dirty)">
+                            <div class="avisos" *ngIf="SegAp.errors.required">
+                                *Ingrese Fecha de Nacimiento.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="formGroup" style="text-align:left">GÉNERO:</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" name="genero_" [(ngModel)]='titular.genero' #generoList="ngModel"
+                            RequiredSelect>
+                            <option value="null" disabled>Seleccionar</option>
+                            <option value="77">MASCULINO</option>
+                            <option value="70">FEMENINO</option>
+                        </select>
+                        <div *ngIf="generoList.invalid && (generoList.touched || generoList.dirty)">
+                            <div class="avisos" *ngIf="generoList.errors.required">
+                                *Seleccione Género.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="formGroup" style="text-align:left">PLAN:</label>
+                    <div class="col-sm-6">
+                        <select (click)="mostrarValor(titular.sec_plan)" class="form-control" name="planDescripcion_"
+                            [(ngModel)]='titular.sec_plan' #planList="ngModel" [disabled]="bloqueoplan==2" RequiredSelect>
+                            <option [ngValue]="0" disabled>Seleccionar</option>
+                            <option *ngFor="let planes of plan" [ngValue]="planes.sec_plan">{{planes.descripcion}}</option>
+                        </select>
+                        <div *ngIf="planList.invalid && (planList.touched || planList.dirty)">
+                            <div class="avisos" *ngIf="planList.errors.required">
+                                *Seleccione un Plan.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h3 class="col-sm-4 control-label" for="formGroup" style="text-align:left">DATOS PARA DEBITO</h3>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="formGroup" style="text-align:left">TIPO DE CUENTA:</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" name="tipoCuenta_" [(ngModel)]='titular.sec_tipoCuenta'
+                            #cuentaList="ngModel" Required>
+                            <option [ngValue]="300" disabled>Seleccionar</option>
+                            <option *ngFor="let tipoC of cuentas" [ngValue]="tipoC.sec_tipoCuenta">{{tipoC.descripcion}}</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="form-group" *ngIf="titular.sec_tipoCuenta != 300">
+                    <label class="col-sm-4 control-label" for="formGroup" style="text-align:left">NÚMERO DE CUENTA:</label>
+                    <div class="col-sm-6">
+                        <input class="form-control" type="text" id="formGroup" name="noCuentaTit_" numero [(ngModel)]="titular.noCuenta"
+                            required #cuenta="ngModel">
+                        <div class="avisos" *ngIf="cuenta.invalid ">
+                            * Número de Cuenta Requerida.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="formGroup" style="text-align:left">INSTITUCIÓN
+                        FINANCIERA:</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" name="banco" [(ngModel)]='titular.sec_banco' #Bancos="ngModel"
+                            RequiredSelect>
+                            <option [ngValue]="0" disabled>Seleccionar</option>
+                            <option *ngFor="let bancos of banco" [ngValue]="bancos.sec_banco">{{bancos.descripcion}}</option>
+                        </select>
+                        <div *ngIf="Bancos.invalid && (Bancos.touched || Bancos.dirty)">
+                            <div class="avisos" *ngIf="Bancos.errors.required">
+                                *Seleccione una Entidad Financiera.
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="formGroup" style="text-align:left">FORMA DE PAGO:</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" name="pago_" [(ngModel)]='titular.div_pago' #pagoList="ngModel"
+                            RequiredSelect>
+                            <option value="null" disabled>Seleccionar</option>
+                            <option value="Mensuales">MENSUAL</option>
+                            <option value="Semestrales">SEMESTRAL</option>
+                            <option value="Anuales">ANUAL</option>
+                        </select>
+                        <div *ngIf="pagoList.invalid && (pagoList.touched || pagoList.dirty)">
+                            <div class="avisos" *ngIf="pagoList.errors.required">
+                                *Seleccione Forma de pago.
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="formGroup" style="text-align:left">TOTAL PLAN:</label>
+                    <div class="col-sm-6">
+                        <h2 style="margin-top: 5px;"> {{valorCuota}}</h2>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="form-group; col-sm-12;">
+                    <div class="col-sm-2"></div>
+                <div class="col-sm-4">
+                    <button (click)="abrirPDF()" class="btn btn-primary" title="Llene el formulario porfavor!"
+                        [disabled]="bloqueo==0 ">
+                        Descargar Autorización
+                    </button>
+                </div>
+                <div class="col-sm-6">
+                   
+                            <button (click)="guardar();" class="btn btn-success" title="Llene el formulario porfavor!"
+                                [disabled]="!TitularForm.form.valid  " *ngIf="mostrarGuardar">
+                                <span class="glyphicon glyphicon-floppy-saved"></span> Guardar Titular </button>
+                          
+                            <button (click)="abrirModal()" class="btn btn-primary" title="Llene el formulario porfavor!"
+                                [disabled]="!TitularForm.form.valid || bloqueo==0">
+                                Agregar Dependiente
+                            </button>
+
+                </div>
+            </div>
+            <br><br>
+           
+            <div class="row" style="margin-bottom: 50px">
+                <div class="col-sm-12">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+                        <div id="divResultadoBusquedaContratos" class="ibox-content" style="border-width:1px 0px 0px 0px;width: 100%; margin-top: 30px;"
+                            *ngIf="bloqueo==20">
+                            <div class="dataTables_info">Dependientes de: {{titular.PrimerNombre}}
+                                {{titular.PrimerApellido}}
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th class="centerMiddle" colspan="2">Acciones:</th>
+                                            <th class="centerMiddle">CÉDULA</th>
+                                            <th class="centerMiddle"> NOMBRES</th>
+                                            <th class="centerMiddle">APELLIDOS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="no-borders" *ngFor="let depen of titular.dependientes">
+                                        <tr>
+                                            <td class="centerMiddle">
+                                                <a title="Clic para editar Dependiente">
+                                                    <i class="fa fa-edit" (click)="modificarDep(depen)"> Editar</i>
+                                                </a>
+                                            </td>
+                                            <td class="centerMiddle">
+                                                <a title="Clic para borrar Dependiente">
+                                                    <i class="fa fa-window-close-o" (click)="borraDependiente(depen)">
+                                                        Eliminar</i>
+                                                </a>
+                                            </td>
+                                            <td class="centerMiddle">{{depen.NoIdentificacion}}</td>
+                                            <td class="centerMiddle">{{depen.PrimerNombre}} {{depen.SegundoNombre}}</td>
+                                            <td class="centerMiddle">{{depen.PrimerApellido}} {{depen.SegundoApellido}}</td>
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+<modal #campaignModal>
+    <modal-body>
+        <form #DepeForm="ngForm" name="form">
+
+            <div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+
+                        <div class="form-group">
+                            <label class="col-sm-10 control-label" for="formGroup" style="text-align:left">Tipo
+                                de Identificación: </label>
+                            <div class="col-sm-12">
+                                <select class="form-control" name="tipoIdentificacion2" #tipoDato="ngModel" [(ngModel)]="listaTablaSelected.sec_tipoDoc"
+                                    (change)="cambioDep()">
+                                    <option [ngValue]="0" disabled="disabled">Seleccionar</option>
+                                    <option *ngFor="let tipos of tipoDepDoc" [ngValue]="tipos.Id">{{tipos.IdentificationType}}</option>
+                                </select>
+                                <div *ngIf="tipoDato.invalid && (tipoDato.touched || tipoDato.dirty)">
+                                    <div class="avisos" *ngIf="tipoDato.errors.required">
+                                        *Seleccione Tipo de Identificación.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" *ngIf="listaTablaSelected.sec_tipoDoc != 0 && cedulaDep">
+                            <label class="col-sm-10 control-label" for="formGroup" style="text-align:left">No
+                                Documento:
+                            </label>
+                            <div class="col-sm-12">
+                                <input class="form-control" type="text" id="formGroup" name="NoDocumento" [(ngModel)]="listaTablaSelected.NoIdentificacion"
+                                    (focusout)="obtenerDatosDep(listaTablaSelected.NoIdentificacion)"
+                                    identificationNumber #cedulaModel="ngModel" placeholder="Ingrese Número de Cedula"
+                                    maxlength="10" required>
+                                <div *ngIf="cedulaModel.touched">
+                                    <div class="avisos" *ngIf="cedRep">
+                                        * Cedula Repetida.
+                                    </div>
+                                    <div class="avisos" *ngIf="cedulaModel.invalid">
+                                        *Cedula Incorrecta
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" *ngIf="listaTablaSelected.sec_tipoDoc != 0 && pasDep">
+                            <label class="col-sm-10 control-label" for="formGroup" style="text-align:left">No
+                                Documento:
+                            </label>
+                            <div class="col-sm-12">
+                                <input class="form-control" type="text" id="formGroup" name="NoDocumento" [(ngModel)]="listaTablaSelected.NoIdentificacion"
+                                    (focusout)="pasaporteRepetido(listaTablaSelected.NoIdentificacion)" placeholder="Ingrese Pasaporte"
+                                    maxlength="15" #pasModel="ngModel" required>
+                            </div>
+                            <div class="avisos" *ngIf="pasModel.invalid">
+                                *Pasaporte requerido.
+                            </div>
+                            <div class="avisos" *ngIf="pasRepetido">
+                                *Pasaporte Repetido.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-10 control-label" for="formGroup" style="text-align:left">Primer
+                                Nombre:
+                            </label>
+                            <div class="col-sm-12">
+                                <input class="form-control" style="text-transform:uppercase;" type="text" id="formGroup" texto #nombDep1="ngModel" name="primerNombre"
+                                    maxlength="20" texto [(ngModel)]="listaTablaSelected.PrimerNombre" required>
+                                <div *ngIf="nombDep1.invalid">
+                                    <div class="avisos" *ngIf="nombDep1.errors.required">
+                                        *Ingrese Primer Nombre del Dependiente.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-10 control-label" for="formGroup" style="text-align:left">Segundo
+                                Nombre:
+                            </label>
+                            <div class="col-sm-12">
+                                <input class="form-control" style="text-transform:uppercase;" type="text" id="formGroup" texto #nombDep2="ngModel" name="segundoNombre"
+                                    maxlength="20" texto [(ngModel)]="listaTablaSelected.SegundoNombre">
+                            </div>
+                            <div *ngIf="nombDep2.invalid && nombDep2.touched">
+                                <div class="avisos" *ngIf="nombDep2.errors.required">
+                                    *Ingrese Segundo Nombre del Dependiente.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-10 control-label" for="formGroup" style="text-align:left">GÉNERO:
+                            </label>
+                            <div class="col-sm-12">
+                                <select class="form-control" name="generodep" [(ngModel)]='listaTablaSelected.genero'
+                                    #generodepList="ngModel" RequiredSelect>
+                                    <option value="null" disabled>Seleccionar</option>
+                                    <option value="77">MASCULINO</option>
+                                    <option value="70">FEMENINO</option>
+                                </select>
+                                <div *ngIf="generodepList.invalid">
+                                    <div class="avisos" *ngIf="generodepList.errors.required">
+                                        *Seleccione Género.
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-sm-10 control-label" for="formGroup" style="text-align:left">Primer
+                                Apellido:
+                            </label>
+                            <div class="col-sm-12">
+                                <input class="form-control" style="text-transform:uppercase;" type="text" id="formGroup" #apeDep1="ngModel" name="apellido1"
+                                    maxlength="20" texto [(ngModel)]="listaTablaSelected.PrimerApellido" required>
+                            </div>
+                            <div *ngIf="apeDep1.invalid">
+                                <div class="avisos" *ngIf="apeDep1.errors.required">
+                                    *Ingrese Primer Apellido del Dependiente.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-10 control-label" for="formGroup" style="text-align:left">Segundo
+                                Apellido:
+                            </label>
+                            <div class="col-sm-12">
+                                <input class="form-control" style="text-transform:uppercase;" type="text" id="formGroup" #apeDep2="ngModel" name="apellido2"
+                                    maxlength="20" texto [(ngModel)]="listaTablaSelected.SegundoApellido">
+                            </div>
+                            <div *ngIf="apeDep2.invalid">
+                                <div class="avisos" *ngIf="apeDep2.errors.required">
+                                    *Ingrese Segundo Apellido del Dependiente.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-10 control-label" for="formGroup" style="text-align:left">Fecha
+                                de Nacimiento:
+                            </label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" [maxDate]="fechaActual" (focusout)="traerFecha(listaTablaSelected.Fecha_Nacimiento)"
+                                    #dp="bsDatepicker" bsDatepicker [(bsValue)]="listaTablaSelected.Fecha_Nacimiento">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-10 control-label" for="formGroup" style="text-align:left">Parentesco:
+                            </label>
+                            <div class="col-sm-8">
+                                <select class="form-control" #parentescoL="ngModel" name="parentesco" (change)="depOtro(listaTablaSelected)"
+                                    RequiredSelect [(ngModel)]="listaTablaSelected.sec_parentesco" required>
+                                    <option [ngValue]="0" (focusout)="traerFecha(listaTablaSelected.Fecha_Nacimiento)"
+                                        selected>Seleccionar</option>
+                                    <option *ngFor="let par of parentescos" [ngValue]="par.sec_parentesco" [disabled]="(redondeoFecha > 23 && par.sec_parentesco==1) || ( 23 > redondeoFecha  && par.sec_parentesco==49)">{{par.descripcion}}</option>
+
+                                </select>
+                            </div>
+                            <div *ngIf="parentescoL.invalid ">
+                                <div class="avisos" *ngIf="parentescoL.errors.required">
+                                    *Seleccione Parentesco
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" id="formGroup" name="parentesco" [(ngModel)]="listaTablaSelected.otro_paretesco"
+                                    maxlength="20" texto placeholder="Ingrese un Parentesco" *ngIf="mostrarDep">
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </form>
+    </modal-body>
+    <modal-footer>
+        <button type="button" class="btn btn-w-m btn-default" (click)="campaignModal.close();">Cerrar</button>
+        <button (click)="agregarDatosATabla();" class="btn btn-success" [disabled]="!DepeForm.form.valid">
+            <span class="glyphicon glyphicon-floppy-saved" title="Llene el formulario porfavor!"></span> Guardar</button>
+    </modal-footer>
+</modal>
